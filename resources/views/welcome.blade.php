@@ -34,25 +34,22 @@
                 <div class="md:mt-12 md:w-48 md:fixed md:left-0 md:top-0 content-center md:content-start text-left justify-between">
                     <ul class="list-reset flex flex-row md:flex-col pt-3 md:py-3 px-1 md:px-2 text-center md:text-left">
                         <li class="mr-3 flex-1">
-                            <a href="#" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-pink-500">
-                                <i class="fas fa-tasks pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-400 md:text-gray-200 block md:inline-block">Tasks</span>
-                            </a>
-                        </li>
-                        <li class="mr-3 flex-1">
                             <a href="#" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-purple-500">
-                                <i class="fa fa-envelope pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-400 md:text-gray-200 block md:inline-block">Messages</span>
+                                <i class="fa fa-envelope pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-400 md:text-gray-200 block md:inline-block">Articles</span>
                             </a>
                         </li>
+                        @auth
                         <li class="mr-3 flex-1">
                             <a href="#" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-blue-600">
-                                <i class="fas fa-chart-area pr-0 md:pr-3 text-blue-600"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-white md:text-white block md:inline-block">Analytics</span>
+                                <i class="fas fa-chart-area pr-0 md:pr-3 text-blue-600"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-white md:text-white block md:inline-block">Messages</span>
                             </a>
                         </li>
                         <li class="mr-3 flex-1">
                             <a href="#" class="block py-1 md:py-3 pl-0 md:pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-red-500">
-                                <i class="fa fa-wallet pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-400 md:text-gray-200 block md:inline-block">Payments</span>
+                                <i class="fa fa-wallet pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-400 md:text-gray-200 block md:inline-block">WishList</span>
                             </a>
                         </li>
+                        @endauth
                     </ul>
                 </div>
 
@@ -167,69 +164,6 @@
                 <div class="w-full md:w-1/2 xl:w-1/3 p-6">
                 </div>
 
-                <div class="w-full md:w-1/2 xl:w-1/3 p-6">
-                    <!--Graph Card-->
-                    <div class="bg-white border-transparent rounded-lg shadow-xl">
-                        <div class="bg-gradient-to-b from-gray-300 to-gray-100 uppercase text-gray-800 border-b-2 border-gray-300 rounded-tl-lg rounded-tr-lg p-2">
-                            <h2 class="font-bold uppercase text-gray-600">Graph</h2>
-                        </div>
-                        <div class="p-5">
-                            <canvas id="chartjs-1" class="chartjs" width="undefined" height="undefined"></canvas>
-                            <script>
-                                new Chart(document.getElementById("chartjs-1"), {
-                                    "type": "bar",
-                                    "data": {
-                                        "labels": ["January", "February", "March", "April", "May", "June", "July"],
-                                        "datasets": [{
-                                            "label": "Likes",
-                                            "data": [65, 59, 80, 81, 56, 55, 40],
-                                            "fill": false,
-                                            "backgroundColor": ["rgba(255, 99, 132, 0.2)", "rgba(255, 159, 64, 0.2)", "rgba(255, 205, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(54, 162, 235, 0.2)", "rgba(153, 102, 255, 0.2)", "rgba(201, 203, 207, 0.2)"],
-                                            "borderColor": ["rgb(255, 99, 132)", "rgb(255, 159, 64)", "rgb(255, 205, 86)", "rgb(75, 192, 192)", "rgb(54, 162, 235)", "rgb(153, 102, 255)", "rgb(201, 203, 207)"],
-                                            "borderWidth": 1
-                                        }]
-                                    },
-                                    "options": {
-                                        "scales": {
-                                            "yAxes": [{
-                                                "ticks": {
-                                                    "beginAtZero": true
-                                                }
-                                            }]
-                                        }
-                                    }
-                                });
-                            </script>
-                        </div>
-                    </div>
-                    <!--/Graph Card-->
-                </div>
-
-                <div class="w-full md:w-1/2 xl:w-1/3 p-6">
-                    <!--Graph Card-->
-                    <div class="bg-white border-transparent rounded-lg shadow-xl">
-                        <div class="bg-gradient-to-b from-gray-300 to-gray-100 uppercase text-gray-800 border-b-2 border-gray-300 rounded-tl-lg rounded-tr-lg p-2">
-                            <h5 class="font-bold uppercase text-gray-600">Graph</h5>
-                        </div>
-                        <div class="p-5"><canvas id="chartjs-4" class="chartjs" width="undefined" height="undefined"></canvas>
-                            <script>
-                                new Chart(document.getElementById("chartjs-4"), {
-                                    "type": "doughnut",
-                                    "data": {
-                                        "labels": ["P1", "P2", "P3"],
-                                        "datasets": [{
-                                            "label": "Issues",
-                                            "data": [300, 50, 100],
-                                            "backgroundColor": ["rgb(255, 99, 132)", "rgb(54, 162, 235)", "rgb(255, 205, 86)"]
-                                        }]
-                                    }
-                                });
-                            </script>
-                        </div>
-                    </div>
-                    <!--/Graph Card-->
-                </div>
-
                     <div class="w-full md:w-1/2 xl:w-1/3 p-6">
                         <!--Table Card-->
                         <div class="bg-white border-transparent rounded-lg shadow-xl">
@@ -286,7 +220,6 @@
 
                         </div>
                     </div>
-                    <!--/Advert Card-->
                 </div>
 
 
@@ -295,20 +228,5 @@
         </section>
     </div>
     </main>
-{{--        <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">--}}
-{{--            @if (Route::has('login'))--}}
-{{--                <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">--}}
-{{--                    @auth--}}
-{{--                        <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>--}}
-{{--                    @else--}}
-{{--                        <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>--}}
-
-{{--                        @if (Route::has('register'))--}}
-{{--                            <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>--}}
-{{--                        @endif--}}
-{{--                    @endauth--}}
-{{--                </div>--}}
-{{--            @endif--}}
-
     </body>
 </html>
