@@ -18,8 +18,8 @@
                     </div>
 
                     <div>
-                        <label for="picture" class="block text-sm font-medium text-gray-600">Image:</label>
-                        <input type="file" id="picture" name="picture" class="mt-1 p-2 w-full border rounded-md">
+                        <label for="image" class="block text-sm font-medium text-gray-600">Image:</label>
+                        <input type="file" id="picture" name="image" class="mt-1 p-2 w-full border rounded-md">
                     </div>
 
                     <div>

@@ -19,10 +19,11 @@
 
                 <!-- Image du produit -->
                 <div>
-                    <label for="picture" class="block text-sm font-medium text-gray-600">Image:</label>
-                    <input type="file" id="picture" name="picture" class="mt-1 p-2 w-full border rounded-md">
-                    <img src="{{ asset('storage/' . $produit->picture) }}" alt="{{ $produit->nom }}" class="mt-4 w-full h-48 object-cover">
+                    <label for="image" class="block text-sm font-medium text-gray-600">Image:</label>
+                    <input type="file" id="picture" name="image" class="mt-1 p-2 w-full border rounded-md">
+                    <img src="{{ asset('images/' . $produit->image) }}" alt="{{ $produit->nom }}" class="mt-4 w-full h-48 object-contain">
                 </div>
+
 
                 <!-- Description du produit -->
                 <div>

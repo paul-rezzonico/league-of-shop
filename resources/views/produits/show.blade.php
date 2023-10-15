@@ -10,7 +10,7 @@
             <h1 class="text-2xl font-bold mb-4">{{ $produit->nom }}</h1>
 
             <!-- Image du produit -->
-            <img src="{{ asset('images/' . $produit->image) }}" alt="{{ $produit->nom }}" class="w-full h-64 object-cover mb-6">
+            <img src="{{ asset('images/' . $produit->image) }}" alt="{{ $produit->nom }}" class="mt-4 w-full h-48 object-contain">
 
             <!-- Description du produit -->
             <p class="text-gray-700 mb-4">{{ $produit->description }}</p>
