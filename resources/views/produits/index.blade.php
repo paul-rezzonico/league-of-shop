@@ -18,11 +18,17 @@
                         @foreach ($produits as $produit)
                             <div class="border p-4 rounded-md">
                                 <h3 class="text-xl font-bold mb-4">{{ $produit->nom }}</h3>
-                                <img src="{{ asset('images/' . $produit->image) }}" alt="{{ $produit->nom }}" class="mt-4 w-full max-w-lg max-h-96 mx-auto object-contain">
+                                @if($produit->image)
+                                    <img src="{{ asset('images/' . $produit->image) }}" alt="{{ $produit->nom }}" class="mt-4 w-full max-w-lg max-h-96 mx-auto object-contain">
+                                @else
+                                    <img src="{{ asset('images/not_found.png') }}" alt="{{ $produit->nom }}" class="mt-4 w-full max-w-lg max-h-96 mx-auto object-contain">
+                                @endif
                                 <!-- Bouton "Lire plus" -->
-                                <a href="{{ route('produits.show', $produit->id) }}" class="inline-block px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 mt-4">
-                                    Lire plus
-                                </a>
+                                <div class="flex justify-center mt-4">
+                                    <a href="{{ route('produits.show', $produit->id) }}" class="inline-block px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+                                        Plus d'infos sur ce produit
+                                    </a>
+                                </div>
                             </div>
                         @endforeach
 

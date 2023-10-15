@@ -36,16 +36,19 @@
                     <!-- Bouton Ajouter à la wishlist -->
                     <a href="#" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 mr-2">Ajouter à la wishlist</a>
 
-                    <!-- Bouton Contacter le vendeur -->
-                    <a href="#" class="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600">Contacter le vendeur</a>
+                    <form action="{{ route('contact.vendeur', $produit) }}" method="POST" class="inline-block">
+                        @csrf
+                        <button type="submit" class="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600">Contacter le vendeur</button>
+                    </form>
                 @endif
             @endauth
 
             @guest
-                <!-- Bouton Ajouter à la wishlist et Contacter le vendeur (pour les utilisateurs non connectés) -->
-                <a href="#" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 mr-2">Ajouter à la wishlist</a>
-                <a href="#" class="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600">Contacter le vendeur</a>
+                <a href="{{ route('login') }}" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Se connecter pour contacter le vendeur</a>
             @endguest
+            <!-- Bouton Retour -->
+            <a href="{{ route('produits.index')  }}" class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 ml-auto">Retour</a>
+
         </div>
     </div>
 </x-app-layout>
