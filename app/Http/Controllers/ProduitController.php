@@ -84,7 +84,7 @@ class ProduitController extends Controller
     }
 
     public function mesProduits() {
-        $produits = auth()->user()->produits;
+        $produits = auth()->user()->produits()->paginate(10);
         return view('produits.mesProduits', compact('produits'));
     }
 
