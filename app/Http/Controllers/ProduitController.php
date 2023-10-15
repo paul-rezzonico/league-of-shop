@@ -83,10 +83,15 @@ class ProduitController extends Controller
         return redirect()->route('produits.index')->with('success', 'Produit mis à jour avec succès');
     }
 
+    public function mesProduits() {
+        $produits = auth()->user()->produits;
+        return view('produits.mesProduits', compact('produits'));
+    }
+
     public function destroy(Produit $produit)
     {
         $this->authorize('delete', $produit);
         $produit->delete();
-        return redirect()->route('produits.index')->with('success', 'Produit supprimé avec succès');
+        return redirect()->back()->with('success', 'Produit supprimé avec succès');
     }
 }

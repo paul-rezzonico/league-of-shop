@@ -26,6 +26,12 @@
                 @if(auth()->user()->id === $produit->user_id)
                     <!-- Bouton Éditer (affiché seulement si le produit appartient à l'utilisateur connecté) -->
                     <a href="{{ route('produits.edit', $produit) }}" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Éditer</a>
+                    <!-- Formulaire de suppression -->
+                    <form action="{{ route('produits.destroy', $produit) }}" method="POST" class="inline-block ml-2">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette offre?');">Supprimer l'offre</button>
+                    </form>
                 @else
                     <!-- Bouton Ajouter à la wishlist -->
                     <a href="#" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 mr-2">Ajouter à la wishlist</a>
