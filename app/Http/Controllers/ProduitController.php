@@ -32,12 +32,18 @@ class ProduitController extends Controller
             'prix' => 'required|numeric',
         ]);
 
+        if($request->hasFile('image')) {
+            $imageName = time() . '.' . $request->image->getClientOriginalExtension();
+            $request->image->move(public_path('images'), $imageName);
+            $data['image'] = $imageName;
+        }
+
         $isCreated = Produit::create([
             'nom' => $data['nom'],
             'description' => $data['description'],
             'prix' => $data['prix'],
             'user_id' => $user->getAuthIdentifier(),
-            'image' => 'https://picsum.photos/200/300',
+            'image' => $data['image'] ?? null,
         ]);
         if (!$isCreated) {
             return redirect()->back()->with('error', 'Une erreur est survenue lors de la création du produit');
@@ -65,6 +71,12 @@ class ProduitController extends Controller
             'description' => 'nullable|string',
             'prix' => 'required|numeric',
         ]);
+
+        if($request->hasFile('image')) {
+            $imageName = time() . '.' . $request->image->getClientOriginalExtension();
+            $request->image->move(public_path('images'), $imageName);
+            $data['image'] = $imageName;
+        }
 
         $produit->update($data);
 

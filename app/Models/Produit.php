@@ -19,6 +19,7 @@ class Produit extends Model
         'description',
         'prix',
         'user_id', // Si vous liez le produit à un utilisateur
+        'image',
     ];
 
     /**

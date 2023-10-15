@@ -18,7 +18,7 @@
                         @foreach ($produits as $produit)
                             <div class="border p-4 rounded-md">
                                 <h3 class="text-xl font-bold mb-4">{{ $produit->nom }}</h3>
-                                <img src="{{ asset('storage/' . $produit->image_path) }}" alt="{{ $produit->nom }}" class="w-full h-48 object-cover mb-4">
+                                <img src="{{ asset('images/' . $produit->image) }}" alt="{{ $produit->nom }}" class="w-50 h-50 rounded-full">
                                 <!-- Bouton "Lire plus" -->
                                 <a href="{{ route('produits.show', $produit->id) }}" class="inline-block px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
                                     Lire plus

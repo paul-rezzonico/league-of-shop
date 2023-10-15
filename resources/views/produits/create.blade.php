@@ -9,12 +9,17 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
 
-                <form action="{{ route('produits.store') }}" method="POST" class="space-y-4">
+                <form action="{{ route('produits.store') }}" method="POST" enctype="multipart/form-data" class="space-y-4">
                     @csrf
 
                     <div>
                         <label for="nom" class="block text-sm font-medium text-gray-600">Nom:</label>
                         <input type="text" id="nom" name="nom" class="mt-1 p-2 w-full border rounded-md">
+                    </div>
+
+                    <div>
+                        <label for="picture" class="block text-sm font-medium text-gray-600">Image:</label>
+                        <input type="file" id="picture" name="picture" class="mt-1 p-2 w-full border rounded-md">
                     </div>
 
                     <div>
