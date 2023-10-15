@@ -53,11 +53,13 @@ class ProduitController extends Controller
 
     public function edit(Produit $produit)
     {
+        $this->authorize('edit', $produit);
         return view('produits.edit', compact('produit'));
     }
 
     public function update(Request $request, Produit $produit)
     {
+        $this->authorize('edit', $produit);
         $data = $request->validate([
             'nom' => 'required|string|max:255',
             'description' => 'nullable|string',
@@ -71,6 +73,7 @@ class ProduitController extends Controller
 
     public function destroy(Produit $produit)
     {
+        $this->authorize('delete', $produit);
         $produit->delete();
         return redirect()->route('produits.index')->with('success', 'Produit supprimé avec succès');
     }
