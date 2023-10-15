@@ -22,33 +22,47 @@
             <p class="text-sm text-gray-500 mb-4">Vendeur: {{ $produit->user->name }}</p>
 
             <!-- Boutons -->
-            @auth
-                @if(auth()->user()->id === $produit->user_id)
-                    <!-- Bouton Éditer (affiché seulement si le produit appartient à l'utilisateur connecté) -->
-                    <a href="{{ route('produits.edit', $produit) }}" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Éditer</a>
-                    <!-- Formulaire de suppression -->
-                    <form action="{{ route('produits.destroy', $produit) }}" method="POST" class="inline-block ml-2">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette offre?');">Supprimer l'offre</button>
-                    </form>
-                @else
-                    <!-- Bouton Ajouter à la wishlist -->
-                    <a href="#" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 mr-2">Ajouter à la wishlist</a>
+            <div class="flex justify-between items-center">
+                @auth
+                    @if(auth()->user()->id === $produit->user_id)
+                        <!-- Bouton Éditer (affiché seulement si le produit appartient à l'utilisateur connecté) -->
+                        <div>
+                            <a href="{{ route('produits.edit', $produit) }}" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Éditer</a>
+                            <!-- Formulaire de suppression -->
+                            <form action="{{ route('produits.destroy', $produit) }}" method="POST" class="inline-block ml-2">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette offre?');">Supprimer l'offre</button>
+                            </form>
+                        </div>
+                    @else
+                        <!-- Bouton Ajouter à la wishlist -->
+                        <div>
+                            @if(auth()->check() && auth()->user()->wishlists()->where('produit_id', $produit->id)->exists())
+                                <form action="{{ route('wishlist.remove', $produit->id) }}" method="post" class="inline-block ml-2">
+                                    @csrf
+                                    <button type="submit" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">Retirer de la wishlist</button>
+                                </form>
+                            @else
+                                <form action="{{ route('wishlist.add', $produit->id) }}" method="post" class="inline-block ml-2">
+                                    @csrf
+                                    <button type="submit" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Ajouter à la wishlist</button>
+                                </form>
+                            @endif
+                            <form action="{{ route('contact.vendeur', $produit) }}" method="POST" class="inline-block ml-2">
+                                @csrf
+                                <button type="submit" class="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600">Contacter le vendeur</button>
+                            </form>
+                        </div>
+                    @endif
+                @endauth
 
-                    <form action="{{ route('contact.vendeur', $produit) }}" method="POST" class="inline-block">
-                        @csrf
-                        <button type="submit" class="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600">Contacter le vendeur</button>
-                    </form>
-                @endif
-            @endauth
-
-            @guest
-                <a href="{{ route('login') }}" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Se connecter pour contacter le vendeur</a>
-            @endguest
-            <!-- Bouton Retour -->
-            <a href="{{ route('produits.index')  }}" class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 ml-auto">Retour</a>
-
+                @guest
+                    <a href="{{ route('login') }}" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Se connecter pour contacter le vendeur</a>
+                @endguest
+                <!-- Bouton Retour -->
+                <a href="{{ route('produits.index')  }}" class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600">Retour</a>
+            </div>
         </div>
     </div>
 </x-app-layout>

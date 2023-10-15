@@ -3,6 +3,7 @@
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,5 +33,10 @@ Route::post('/contact-vendeur/{produit}', [ContactController::class, 'sendMail']
 Route::get('/confirmation', function () {
     return view('confirmation');
 })->name('confirmation');
+
+Route::middleware(['auth'])->group(function () {
+    Route::post('/wishlist/add/{produit}', [WishlistController::class, 'add'])->name('wishlist.add');
+    Route::post('/wishlist/remove/{produit}', [WishlistController::class, 'remove'])->name('wishlist.remove');
+});
 
 require __DIR__.'/auth.php';
