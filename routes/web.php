@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -25,5 +26,11 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('produits', ProduitController::class);
 Route::get('/mes-produits', [ProduitController::class, 'mesProduits'])->middleware('auth')->name('mes-produits');
+
+Route::post('/contact-vendeur/{produit}', [ContactController::class, 'sendMail'])->name('contact.vendeur');
+
+Route::get('/confirmation', function () {
+    return view('confirmation');
+})->name('confirmation');
 
 require __DIR__.'/auth.php';
