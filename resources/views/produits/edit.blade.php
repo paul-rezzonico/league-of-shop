@@ -42,13 +42,11 @@
                     <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Mettre à jour</button>
                     <a href="{{ route('produits.show', $produit) }}" class="px-4 py-2 bg-gray-300 text-black rounded hover:bg-gray-400">Annuler</a>
                 </div>
-
-                <!-- Formulaire de suppression -->
-                <form action="{{ route('produits.destroy', $produit) }}" method="POST" class="mt-4">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette offre?');">Supprimer l'offre</button>
-                </form>
+            </form>
+            <form action="{{ route('produits.destroy', $produit) }}" method="POST" class="mt-4">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette offre?');">Supprimer l'offre</button>
             </form>
         </div>
     </div>

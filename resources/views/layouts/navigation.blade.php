@@ -29,6 +29,7 @@
                 @if(auth()->check())
                 <li><a href="/mes-produits" class="text-gray-400 hover:text-gray-200 py-2 px-4">Mes produits</a></li>
                 <li><a href="/ma-wishlist" class="text-gray-400 hover:text-gray-200 py-2 px-4">Ma wishlist</a></li>
+                    <li><a href="{{ route('produits.create') }}" class="text-gray-400 hover:text-gray-200 py-2 px-4">Vendre</a></li>
                 @endif
             </ul>
         </div>
@@ -38,14 +39,14 @@
                 <li class="flex-1 md:flex-none md:mr-3">
                     <div class="relative inline-block">
                         @if(auth()->check())
-                        <button onclick="toggleDD('myDropdown')" class="drop-button text-white py-2 px-2 mr-4"> <span class="pr-2"><i class="fa fa-user"></i></span> Hi, {{ auth()->user()->name }}</button>
+                        <button onclick="toggleDD('myDropdown')" class="drop-button text-white py-2 px-2 mr-4"> <span class="pr-2"><i class="fa fa-user"></i></span>Bonjour, {{ auth()->user()->name }}</button>
                         @else
-                            <a href="{{ route('login') }}" class="inline-block text-gray-400 no-underline hover:text-gray-200 hover:text-underline py-2 px-4">Login</a>
-                            <a href="{{ route('register') }}" class="inline-block text-gray-400 no-underline hover:text-gray-200 hover:text-underline py-2 px-4">Register</a>
+                            <a href="{{ route('login') }}" class="inline-block text-gray-400 no-underline hover:text-gray-200 hover:text-underline py-2 px-4">Connexion</a>
+                            <a href="{{ route('register') }}" class="inline-block text-gray-400 no-underline hover:text-gray-200 hover:text-underline py-2 px-4">Inscription</a>
                         @endif
                         <div id="myDropdown" class="dropdownlist absolute bg-gray-800 text-white right-0 mt-3 p-3 overflow-auto z-30 invisible">
                             <a href="{{ route('profile.edit') }}" class="p-2 hover:bg-gray-800 text-white text-sm no-underline hover:no-underline block"><i class="fa fa-user fa-fw"></i> Profile</a>
-                            <a href="#" class="p-2 hover:bg-gray-800 text-white text-sm no-underline hover:no-underline block"><i class="fa fa-cog fa-fw"></i> Board </a>
+                            <a href="{{ route('mes-produits') }}" class="p-2 hover:bg-gray-800 text-white text-sm no-underline hover:no-underline block"><i class="fa fa-cog fa-fw"></i> Mes offres </a>
                             <div class="border border-gray-800"></div>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
