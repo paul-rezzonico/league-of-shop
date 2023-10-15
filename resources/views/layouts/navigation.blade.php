@@ -27,8 +27,8 @@
             <ul class="list-reset flex justify-between flex-1 md:flex-none items-center">
                 <li><a href="/produits" class="text-gray-400 hover:text-gray-200 py-2 px-4">Produits</a></li>
                 @if(auth()->check())
-                <li><a href="/mes-produits" class="text-gray-400 hover:text-gray-200 py-2 px-4">Mes produits</a></li>
-                <li><a href="/ma-wishlist" class="text-gray-400 hover:text-gray-200 py-2 px-4">Ma wishlist</a></li>
+                    <li><a href="{{ route('mes-produits') }}" class="text-gray-400 hover:text-gray-200 py-2 px-4">Mes produits</a></li>
+                    <li><a href="{{ route('wishlist.index') }}" class="text-gray-400 hover:text-gray-200 py-2 px-4">Ma wishlist</a></li>
                     <li><a href="{{ route('produits.create') }}" class="text-gray-400 hover:text-gray-200 py-2 px-4">Vendre</a></li>
                 @endif
             </ul>

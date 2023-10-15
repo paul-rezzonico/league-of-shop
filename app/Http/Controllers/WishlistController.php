@@ -6,6 +6,12 @@ use Illuminate\Http\Request;
 
 class WishlistController extends Controller
 {
+    public function index()
+    {
+        $wishlists = auth()->user()->wishlists()->with('produit')->get();
+        return view('wishlists.index', compact('wishlists'));
+    }
+
     public function add($produitId)
     {
         $user = auth()->user();

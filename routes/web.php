@@ -37,6 +37,7 @@ Route::get('/confirmation', function () {
 Route::middleware(['auth'])->group(function () {
     Route::post('/wishlist/add/{produit}', [WishlistController::class, 'add'])->name('wishlist.add');
     Route::post('/wishlist/remove/{produit}', [WishlistController::class, 'remove'])->name('wishlist.remove');
+    Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
 });
 
 require __DIR__.'/auth.php';
