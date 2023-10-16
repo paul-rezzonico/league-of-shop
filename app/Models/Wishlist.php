@@ -12,6 +12,8 @@ class Wishlist extends Model
     // Les colonnes qui peuvent être assignées en masse
     protected $fillable = ['user_id', 'produit_id'];
 
+    protected $perPage = 10;
+
     // Relation avec le modèle User
     public function user()
     {

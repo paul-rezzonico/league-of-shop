@@ -8,7 +8,7 @@ class WishlistController extends Controller
 {
     public function index()
     {
-        $wishlists = auth()->user()->wishlists()->with('produit')->paginate(12);
+        $wishlists = auth()->user()->wishlists()->with('produit')->paginate();
         return view('wishlists.index', compact('wishlists'));
     }
 

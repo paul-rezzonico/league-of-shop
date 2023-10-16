@@ -22,7 +22,7 @@ class Produit extends Model
         'image',
     ];
 
-    protected $perPage = 2;
+    protected $perPage = 12;
 
     /**
      * Les attributs qui doivent être castés à des types natifs.
