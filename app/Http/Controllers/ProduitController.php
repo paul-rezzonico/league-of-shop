@@ -30,11 +30,7 @@ class ProduitController extends Controller
             return redirect()->route('login')->with('error', 'Vous devez être connecté pour créer un produit');
         }
 
-        $data = $request->validate([
-            'nom' => 'required|string|max:255',
-            'description' => 'nullable|string|max:255',
-            'prix' => 'required|numeric|min:0|max:999999',
-        ]);
+        $data = $request->validated();
 
         if($request->hasFile('image')) {
             $imageName = time() . '.' . $request->image->getClientOriginalExtension();
