@@ -12,7 +12,11 @@
                 <ul class="space-y-2">
                     @foreach($produits as $produit)
                         <li class="border p-4 rounded-md hover:bg-gray-100 transition space-y-4">
-                            <img src="{{ asset('images/' . $produit->image) }}" alt="{{ $produit->nom }}" class="w-full h-48 object-contain">
+                            @if($produit->image)
+                                <img src="{{ asset('images/' . $produit->image) }}" alt="{{ $produit->nom }}" class="mt-4 w-full max-w-lg max-h-96 mx-auto object-contain">
+                            @else
+                                <img src="{{ asset('images/not_found.png') }}" alt="{{ $produit->nom }}" class="mt-4 w-full max-w-lg max-h-96 mx-auto object-contain">
+                            @endif
                             <h2 class="text-xl font-semibold">{{ $produit->nom }}</h2>
                             <p>{{ $produit->description }}</p>
                             <div class="flex space-x-2">
@@ -28,6 +32,10 @@
                     @endforeach
                 </ul>
             </div>
+        </div>
+                <!-- Liens de pagination -->
+        <div class="mt-4">
+            {{ $produits->links() }}
         </div>
     </div>
 </x-app-layout>

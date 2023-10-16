@@ -9,7 +9,7 @@ class ProduitController extends Controller
 {
     public function index()
     {
-        $produits = Produit::paginate(10);
+        $produits = Produit::paginate(12);
         return view('produits.index', compact('produits'));
     }
 
@@ -84,7 +84,7 @@ class ProduitController extends Controller
     }
 
     public function mesProduits() {
-        $produits = auth()->user()->produits()->paginate(10);
+        $produits = auth()->user()->produits()->paginate(12);
         return view('produits.mesProduits', compact('produits'));
     }
 

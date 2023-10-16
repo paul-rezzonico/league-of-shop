@@ -32,5 +32,9 @@
                 </ul>
             </div>
         </div>
+                <!-- Liens de pagination -->
+        <div class="mt-4">
+            {{ $wishlists->links() }}
+        </div>
     </div>
 </x-app-layout>
