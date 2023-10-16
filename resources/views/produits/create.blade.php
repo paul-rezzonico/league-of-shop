@@ -14,22 +14,22 @@
 
                     <div>
                         <label for="nom" class="block text-sm font-medium text-gray-600">Nom:</label>
-                        <input type="text" id="nom" name="nom" class="mt-1 p-2 w-full border rounded-md">
+                        <input type="text" id="nom" name="nom" class="mt-1 p-2 w-full border rounded-md" required>
                     </div>
 
                     <div>
                         <label for="image" class="block text-sm font-medium text-gray-600">Image:</label>
-                        <input type="file" id="picture" name="image" class="mt-1 p-2 w-full border rounded-md">
+                        <input type="file" id="picture" name="image" class="mt-1 p-2 w-full border rounded-md"s>
                     </div>
 
                     <div>
                         <label for="description" class="block text-sm font-medium text-gray-600">Description:</label>
-                        <textarea id="description" name="description" class="mt-1 p-2 w-full border rounded-md"></textarea>
+                        <textarea id="description" name="description" class="mt-1 p-2 w-full border rounded-md" required></textarea>
                     </div>
 
                     <div>
                         <label for="prix" class="block text-sm font-medium text-gray-600">Prix:</label>
-                        <input type="text" id="prix" name="prix" class="mt-1 p-2 w-full border rounded-md">
+                        <input type="number" id="prix" name="prix" class="mt-1 p-2 w-full border rounded-md" required step="0.01">
                     </div>
 
                     <div>
@@ -39,7 +39,6 @@
                     </div>
 
                 </form>
-
             </div>
         </div>
     </div>

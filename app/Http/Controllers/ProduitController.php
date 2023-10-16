@@ -9,7 +9,7 @@ class ProduitController extends Controller
 {
     public function index()
     {
-        $produits = Produit::orderBy('created_at', 'desc')->paginate(12);
+        $produits = Produit::orderBy('created_at', 'desc')->paginate();
         return view('produits.index', compact('produits'));
     }
 
@@ -32,8 +32,8 @@ class ProduitController extends Controller
 
         $data = $request->validate([
             'nom' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'prix' => 'required|numeric',
+            'description' => 'nullable|string|max:255',
+            'prix' => 'required|numeric|min:0|max:999999',
         ]);
 
         if($request->hasFile('image')) {
@@ -96,6 +96,6 @@ class ProduitController extends Controller
     {
         $this->authorize('delete', $produit);
         $produit->delete();
-        return redirect()->back()->with('success', 'Produit supprimé avec succès');
+        return redirect()->route('produits.index')->with('success', 'Produit supprimé avec succès');
     }
 }
