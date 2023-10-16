@@ -16,12 +16,12 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 
                         @foreach ($produits as $produit)
-                            <div class="border p-4 rounded-md">
+                            <div class="border p-4 rounded-md flex flex-col">
                                 <h3 class="text-xl font-bold mb-4">{{ $produit->nom }}</h3>
                                 @if($produit->image)
-                                    <img src="{{ asset('images/' . $produit->image) }}" alt="{{ $produit->nom }}" class="mt-4 w-full max-w-lg max-h-96 mx-auto object-contain">
+                                    <img src="{{ asset('images/' . $produit->image) }}" alt="{{ $produit->nom }}" class="mt-4 w-full max-w-lg max-h-96 mx-auto object-contain flex-grow">
                                 @else
-                                    <img src="{{ asset('images/not_found.png') }}" alt="{{ $produit->nom }}" class="mt-4 w-full max-w-lg max-h-96 mx-auto object-contain">
+                                    <img src="{{ asset('images/not_found.png') }}" alt="{{ $produit->nom }}" class="mt-4 w-full max-w-lg max-h-96 mx-auto object-contain flex-grow">
                                 @endif
                                 <!-- Bouton "Lire plus" -->
                                 <div class="flex justify-center mt-4">
