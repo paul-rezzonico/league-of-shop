@@ -15,7 +15,11 @@ class ProduitController extends Controller
 
     public function create()
     {
-        return view('produits.create');
+        if (auth()->check() && auth()->user()->hasVerifiedEmail()) {
+            return view('produits.create');
+        } else {
+            return redirect()->route('verification.notice')->with('error', 'Vous devez être connecté et avoir vérifié votre adresse email pour créer un produit');
+        }
     }
 
     public function store(Request $request)

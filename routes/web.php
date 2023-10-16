@@ -28,7 +28,7 @@ Route::middleware('auth')->group(function () {
 Route::resource('produits', ProduitController::class);
 Route::get('/mes-produits', [ProduitController::class, 'mesProduits'])->middleware('auth')->name('mes-produits');
 
-Route::post('/contact-vendeur/{produit}', [ContactController::class, 'sendMail'])->name('contact.vendeur');
+Route::post('/contact-vendeur/{produit}', [ContactController::class, 'sendMail'])->name('contact.vendeur')->middleware(['verified']);
 
 Route::get('/confirmation', function () {
     return view('confirmation');
