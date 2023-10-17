@@ -30,9 +30,12 @@ class ContactVendeurNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line($this->user->name . ' est intéressé par votre produit ' . $this->produit->nom . '!')
-            ->action('Voir le produit', url(route('produits.show', $this->produit)))
-            ->line('Merci d\'utiliser notre application!');
+            ->subject('Un utilisateur est intéressé par votre produit')
+            ->view('emails.contact_vendeur', [
+                        'username' => $this->user->name,
+                        'productname' => $this->produit->nom,
+                        'productid' => $this->produit->id,
+                    ]);
     }
 
     /**

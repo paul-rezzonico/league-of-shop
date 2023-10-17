@@ -54,7 +54,8 @@ class ContactVendeur extends Mailable
         return $this->view('emails.contact_vendeur')
                     ->with([
                         'username' => $this->user->name,
-                        'productname' => $this->produit->nom
+                        'productname' => $this->produit->nom,
+                        'productid' => $this->produit->id,
                     ]);
     }
 }

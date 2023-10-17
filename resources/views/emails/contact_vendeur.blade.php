@@ -24,7 +24,9 @@
         </p>
         <p class="text-gray-700 mb-4">
             <i class="fas fa-box-open text-blue-500 mr-2"></i>
-            Produit : {{ $productname }}
+            Produit : <a href="{{ route('produits.show', $productid) }}" class="text-blue-500 hover:underline">
+                {{ $productname }}
+            </a>
         </p>
         <p class="text-gray-700">
             Merci de continuer à utiliser <strong>League of Shop</strong> pour vos besoins en matière de shopping !
